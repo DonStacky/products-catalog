@@ -1,0 +1,7 @@
+<ul [ngStyle]="{ width: width }">
+  <li *ngFor="let item of items" class="list-item">
+    <ng-container
+      *ngTemplateOutlet="itemTemplate; context: { $implicit: item }"
+    ></ng-container>
+  </li>
+</ul>
