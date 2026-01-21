@@ -1,0 +1,14 @@
+.wrapper {
+  width: 200px;
+  margin: 0 auto;
+  padding-top: 60px;
+}
+
+.todo__input {
+  width: 110px;
+}
+
+.todo__input-wrapper {
+  display: flex;
+  justify-content: space-between;
+}

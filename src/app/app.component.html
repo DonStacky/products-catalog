@@ -1,13 +1,48 @@
-<app-list
-  [items]="tasks"
-  [itemTemplate]="taskTemplate"
-  width="200px"
-></app-list>
+<div class="wrapper">
+  <div class="todo__input-wrapper">
+    <input
+      #addTaskInput
+      type="text"
+      (input)="onInputChange(addTaskInput.value)"
+      (keydown.enter)="addTask(); addTaskInput.value = ''"
+      class="todo__input"
+    />
+    <button (click)="addTask(); addTaskInput.value = ''">Add task</button>
+  </div>
 
-<ng-template #taskTemplate let-task>
-  <app-task-item
-    [task]="task"
-    (toggleDone)="onToggleDone($event)"
-    (deleteTask)="onDeleteTask($event)"
-  ></app-task-item>
-</ng-template>
+  <h3>Current tasks</h3>
+  <hr />
+
+  <app-list
+    [items]="currentTasks"
+    [itemTemplate]="taskTemplate"
+    width="200px"
+  ></app-list>
+
+  <hr />
+  <h3>Completed tasks</h3>
+  <hr />
+
+  <app-list
+    [items]="completedTasks"
+    [itemTemplate]="completedTaskTemplate"
+    width="200px"
+  ></app-list>
+
+  <ng-template #taskTemplate let-task>
+    <app-task-item
+      [task]="task"
+      (toggleDone)="onToggleDone($event)"
+      (deleteTask)="onDeleteTask($event)"
+    ></app-task-item>
+  </ng-template>
+
+  <ng-template #completedTaskTemplate let-task>
+    <app-task-item
+      [completed]="true"
+      [task]="task"
+      (toggleDone)="onToggleDone($event)"
+      (deleteTask)="onDeleteTask($event)"
+    ></app-task-item>
+  </ng-template>
+</div>
