@@ -1,4 +1,7 @@
 <div class="wrapper">
+  <h3>Search</h3>
+  <input #searchInput type="text" placeholder="Searching for ..." />
+  <h3>Add task</h3>
   <div class="todo__input-wrapper">
     <input
       #addTaskInput
@@ -7,10 +10,13 @@
       (keydown.enter)="addTask(); addTaskInput.value = ''"
       class="todo__input"
     />
-    <button (click)="addTask(); addTaskInput.value = ''">Add task</button>
+    <button (click)="addTask(); addTaskInput.value = ''">Add</button>
   </div>
 
   <h3>Current tasks</h3>
+
+  <button (click)="completeAllTasks()">Complete all</button>
+
   <hr />
 
   <app-list

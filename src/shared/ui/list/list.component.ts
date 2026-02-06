@@ -1,5 +1,5 @@
 import { NgFor, NgStyle, NgTemplateOutlet } from '@angular/common';
-import { Component, Input, TemplateRef } from '@angular/core';
+import { Component, Input, TemplateRef, Signal, signal } from '@angular/core';
 
 interface ListItemContext<T> {
   $implicit: T;
@@ -13,7 +13,7 @@ interface ListItemContext<T> {
   styleUrl: './list.component.scss'
 })
 export class ListComponent<T> {
-  @Input() items: T[] = [];
+  @Input() items: Signal<T[]> = signal<T[]>([]);
   @Input() itemTemplate!: TemplateRef<ListItemContext<T>>;
   @Input() width: string = 'auto';
 }

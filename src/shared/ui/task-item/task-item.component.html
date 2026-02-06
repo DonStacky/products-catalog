@@ -5,9 +5,11 @@
       [checked]="task.done"
       (change)="toggleDone.emit(task.id)"
     />
-    <span [ngStyle]="{ textDecoration: completed ? 'line-through' : 'none' }">{{
-      task.title
-    }}</span>
+    <span
+      highlightOnHover
+      [ngStyle]="{ textDecoration: completed ? 'line-through' : 'none' }"
+      >{{ task.title }}</span
+    >
   </label>
   <button (click)="deleteTask.emit(task.id)">delete task</button>
 </div>
